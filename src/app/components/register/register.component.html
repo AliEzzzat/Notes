@@ -1,0 +1,60 @@
+<div class="vh-100 position-relative  overflow-hidden" id="particles-js">
+    <div class="position-absolute top-50  start-50 translate-middle d-flex justifiy-content-center align-items-center w-100 ">
+        <div *ngIf="erorrMsg" class="alert alert-light " role="alert">
+            {{erorrMsg}}
+        </div>
+        <div *ngIf="registerDone" class="alert alert-light" role="alert">
+            {{registerDone}}
+        </div>
+        <form class="mx-auto px-2 text-white" [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="d-md-flex justify-content-md-center align-items-md-cente flex-sm-wrap-column ">
+                <div class=" me-2 w-100">
+                    <input type="text" id="first_name" formControlName="first_name" placeholder="First Name"
+                        class="form-control mb-1">
+                    <div *ngIf="registerForm.get('first_name')?.errors && registerForm.get('first_name')?.touched"
+                        class="alert-danger mt-2" role="alert">
+                        <p *ngIf="registerForm.get('first_name')?.errors?.['required']">First Name is requierd</p>
+                        <p *ngIf="registerForm.get('first_name')?.errors?.['minlength']">First Name min length is 3</p>
+                        <p *ngIf="registerForm.get('first_name')?.errors?.['maxlength']">First Name max length is 10</p>
+                    </div>
+                </div>
+                <div class="w-100 ">
+                    <input type="text" id="last_name" formControlName="last_name" placeholder="Last Name"
+                        class="form-control mb-1">
+                    <div *ngIf="registerForm.get('last_name')?.errors && registerForm.get('last_name')?.touched"
+                        class="alert-danger mt-2" role="alert">
+                        <p *ngIf="registerForm.get('last_name')?.errors?.['required']">First Name is requierd</p>
+                        <p *ngIf="registerForm.get('last_name')?.errors?.['minlength']">First Name min length is 3</p>
+                        <p *ngIf="registerForm.get('last_name')?.errors?.['maxlength']">First Name max length is 10</p>
+                    </div>
+                </div>
+
+            </div>
+            <input type="number" id="age" formControlName="age" placeholder="Age" class="form-control mb-1">
+            <div *ngIf="registerForm.get('age')?.errors && registerForm.get('age')?.touched"
+                class="alert-danger mt-2" role="alert">
+                <p *ngIf="registerForm.get('age')?.errors?.['required']">Age is requierd</p>
+                <p *ngIf="registerForm.get('age')?.errors?.['min']">Age min length is 16</p>
+                <p *ngIf="registerForm.get('age')?.errors?.['max']">Age max length is 80</p>
+            </div>
+            
+            <input type="email" id="email" formControlName="email" placeholder="Email" class="form-control mb-1">
+            <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched"
+                class="alert-danger mt-2" role="alert">
+                <p *ngIf="registerForm.get('email')?.errors?.['required']">Email is requierd</p>
+                <p *ngIf="registerForm.get('email')?.errors?.['email']">Email must be right format</p>
+                
+            </div>
+            
+            <input type="password" id="password" formControlName="password" placeholder="Password" class="form-control ">
+            <div *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched"
+                class="alert-danger mt-2" role="alert">
+                <p *ngIf="registerForm.get('password')?.errors?.['required']">Password is requierd</p>
+                <p *ngIf="registerForm.get('password')?.errors?.['pattern']">Password must be from 5 to 15 character without spaces</p>
+                
+            </div>
+            <button [disabled]="registerForm.invalid" class="btn btn-info mt-3 ">Register</button>
+        </form>
+
+    </div>
+</div>

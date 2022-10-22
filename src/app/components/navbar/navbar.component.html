@@ -1,0 +1,14 @@
+
+<div class="container  fixed-top d-flex justify-content-between py-3 text-white">
+    <h3>Notes</h3>
+    <div *ngIf="!isLoggedIn"  class="dropdown">
+      <button class="btn btn-transparent dropdown-toggle  text-white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Login
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" routerLink="/login">Login</a></li>
+        <li><a class="dropdown-item" routerLink="/register">register</a></li>
+      </ul>
+    </div>
+    <a class="nav-link text-decoration-none text-white logout-style" (click)="logout()" *ngIf="isLoggedIn">Logout</a>
+  </div>

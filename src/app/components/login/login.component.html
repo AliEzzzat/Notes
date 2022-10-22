@@ -1,0 +1,28 @@
+<div class="vh-100 position-relative overflow-hidden" id="particles-js">
+    <div
+        class="position-absolute top-50 flex-column start-50 translate-middle d-flex justifiy-content-center align-items-center w-75  ">
+        <div *ngIf="erorrMsg" class="alert alert-light" role="alert">
+            {{erorrMsg}}
+        </div>
+        <form class="  mx-auto  px-2 text-white" [formGroup]="loginForm" (ngSubmit)="login()">
+                <input type="email" id="email" formControlName="email" placeholder="Email" class="form-control mb-1">
+                <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched"
+                    class="alert-danger mt-2" role="alert">
+                    <p *ngIf="loginForm.get('email')?.errors?.['required']">Email is requierd</p>
+                    <p *ngIf="loginForm.get('email')?.errors?.['email']">Email must be right format</p>
+                </div>
+    
+               
+                <input type="password" id="password" formControlName="password" placeholder="Password" class="form-control ">
+                <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched"
+                    class="alert-danger mt-2" role="alert">
+                    <p *ngIf="loginForm.get('password')?.errors?.['required']">Password is requierd</p>
+                    <p *ngIf="loginForm.get('password')?.errors?.['pattern']">Password must be from 5 to 15 character without spaces</p>
+                </div>
+                
+                <button [disabled]="loginForm.invalid" class="btn btn-info mt-3">login</button>
+            </form>
+        </div>
+
+  
+</div>

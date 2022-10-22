@@ -1,0 +1,15 @@
+i,a{
+    cursor: pointer;
+    
+    font-size: large;
+}
+p{
+    font-size: small;
+}
+.succ{
+    top: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #000;
+
+}
